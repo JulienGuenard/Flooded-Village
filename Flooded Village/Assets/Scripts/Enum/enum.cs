@@ -1,5 +1,6 @@
 public enum SquareType
 {
     sand,
-    water
+    water,
+    empty
 }
