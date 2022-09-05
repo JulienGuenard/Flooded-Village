@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GridMethodsN;
 
 public class Square : MonoBehaviour
 {
@@ -11,11 +12,11 @@ public class Square : MonoBehaviour
     bool isClicked = false;
 
     SpriteRenderer spriteR;
-    Square_Editor squareEditor;
+    SquareEditor squareEditor;
     private void Awake()
     {
         spriteR = GetComponent<SpriteRenderer>();
-        squareEditor = GetComponent<Square_Editor>();
+        squareEditor = GetComponent<SquareEditor>();
     }
 
     public void Update()
@@ -32,15 +33,14 @@ public class Square : MonoBehaviour
 
         if (squareEditor.type == SquareType.empty)
         {
-            if (Grid_Editor.instance.GetSquareBottom(squareEditor).type == SquareType.water
-                || Grid_Editor.instance.GetSquareTop(squareEditor).type == SquareType.water
-                || Grid_Editor.instance.GetSquareLeft(squareEditor).type == SquareType.water
-                || Grid_Editor.instance.GetSquareRight(squareEditor).type == SquareType.water)
+            if (GridMethods.GetSquare(squareEditor, 0, 1).type == SquareType.water
+                || GridMethods.GetSquare(squareEditor, 0, -1).type == SquareType.water
+                || GridMethods.GetSquare(squareEditor, 1, 0).type == SquareType.water
+                || GridMethods.GetSquare(squareEditor, -1, 0).type == SquareType.water)
             {
                 squareEditor.type = SquareType.water;
             }
         }
-
     }
 
     private void OnMouseOver()

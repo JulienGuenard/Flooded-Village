@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [ExecuteInEditMode]
-public class Square_Editor : MonoBehaviour
+public class SquareEditor : MonoBehaviour
 {
     public SquareType type;
     public List<Sprite> typeSprite;
