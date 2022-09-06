@@ -6,12 +6,12 @@ namespace GridMethodsN
 {
     public class GridMethods : GridHeritage
     {
-        static public int aaa;
-        static public SquareEditor GetSquare(SquareEditor thisSquare, int x, int y)
+        static public int[] aaa;
+        static public Square GetSquare(Square thisSquare, int x, int y)
         {
             foreach (GameObject obj in grid.gridList)
             {
-                SquareEditor objComp = obj.GetComponent<SquareEditor>();
+                Square objComp = obj.GetComponent<Square>();
                 if (thisSquare.y == objComp.y + y)
                 {
                     if (thisSquare.x == objComp.x + x)
@@ -19,7 +19,6 @@ namespace GridMethodsN
                         return objComp;
                     }
                 }
-
             }
             return grid.squareDummy;
         }

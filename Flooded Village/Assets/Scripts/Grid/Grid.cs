@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,7 +14,7 @@ public class Grid : GridHeritage
 
     public List<GameObject> gridList = new List<GameObject>();
 
-    public SquareEditor squareDummy;
+    public Square squareDummy;
 
     public static Grid instance;
 

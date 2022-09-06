@@ -25,21 +25,21 @@ public class GridEditor : GridHeritage
                 newObj.transform.parent = transform;
                 grid.gridList.Add(newObj);
 
-                SquareEditor newObjSquareEditor = newObj.GetComponent<SquareEditor>();
+                Square newObjSquare = newObj.GetComponent<Square>();
 
-                newObjSquareEditor.x = i;
-                newObjSquareEditor.y = b;
+                newObjSquare.x = i;
+                newObjSquare.y = b;
 
-                newObjSquareEditor.type = SquareType.sand;
+                newObjSquare.type = SquareType.sand;
 
                 if (i <= grid.waterBorderX - 1
                     || i >= grid.gridX - grid.waterBorderX
                     || b <= grid.waterBorderY - 1
                     || b >= grid.gridY - grid.waterBorderY)
                 {
-                    newObjSquareEditor.type = SquareType.water;
+                    newObjSquare.type = SquareType.water;
                 }
-                newObjSquareEditor.Update();
+                newObjSquare.squareEditor.Update();
             }
         }
     }

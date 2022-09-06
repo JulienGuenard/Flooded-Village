@@ -1,23 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using GridMethodsN;
+using System.Collections.Generic;
 
-public class Square : MonoBehaviour
+public class Square : SquareHeritage
 {
     public Color colorHovered;
     public Color colorNormal;
 
+    public SquareType type;
+    public List<Sprite> typeSprite;
+
+    [HideInInspector] public SquareType actualType;
+
+    public int x;
+    public int y;
+
     bool isHovered = false;
     bool isClicked = false;
-
-    SpriteRenderer spriteR;
-    SquareEditor squareEditor;
-    private void Awake()
-    {
-        spriteR = GetComponent<SpriteRenderer>();
-        squareEditor = GetComponent<SquareEditor>();
-    }
 
     public void Update()
     {
@@ -28,24 +27,24 @@ public class Square : MonoBehaviour
 
         if (isClicked)
         {
-            squareEditor.type = SquareType.empty;
+            type = SquareType.empty;
         }
 
-        if (squareEditor.type == SquareType.empty)
+        if (type == SquareType.empty)
         {
-            if (GridMethods.GetSquare(squareEditor, 0, 1).type == SquareType.water
-                || GridMethods.GetSquare(squareEditor, 0, -1).type == SquareType.water
-                || GridMethods.GetSquare(squareEditor, 1, 0).type == SquareType.water
-                || GridMethods.GetSquare(squareEditor, -1, 0).type == SquareType.water)
+            if (GridMethods.GetSquare(square, 0, 1).type == SquareType.water
+                || GridMethods.GetSquare(square, 0, -1).type == SquareType.water
+                || GridMethods.GetSquare(square, 1, 0).type == SquareType.water
+                || GridMethods.GetSquare(square, -1, 0).type == SquareType.water)
             {
-                squareEditor.type = SquareType.water;
+                type = SquareType.water;
             }
         }
     }
 
     private void OnMouseOver()
     {
-        if (squareEditor.type == SquareType.water) return;
+        if (type != SquareType.sand) return;
 
         isHovered = true;
         spriteR.color = colorHovered;

@@ -1,37 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [ExecuteInEditMode]
-public class SquareEditor : MonoBehaviour
+public class SquareEditor : SquareHeritage
 {
-    public SquareType type;
-    public List<Sprite> typeSprite;
-
-    SquareType actualType;
-
-    SpriteRenderer spriteR;
-
-    public int x;
-    public int y;
-
-    private void Awake()
-    {
-        spriteR = GetComponent<SpriteRenderer>();
-    }
-
     public void Update()
-
     {
-        if (actualType == type) return;
-
-        actualType = type;
-
-        switch (type)
+        Debug.Log("aaa");
+        if (square.actualType == square.type) return;
+        Debug.Log("bbb");
+        square.actualType = square.type;
+        Debug.Log(square.actualType);
+        switch (square.type)
         {
-            case SquareType.sand : spriteR.sprite = typeSprite[0]; break;
-            case SquareType.water : spriteR.sprite = typeSprite[1]; break;
-            case SquareType.empty: spriteR.sprite = typeSprite[2]; break;
+            case SquareType.sand : spriteR.sprite = square.typeSprite[0]; break;
+            case SquareType.water : spriteR.sprite = square.typeSprite[1]; break;
+            case SquareType.empty: spriteR.sprite = square.typeSprite[2]; break;
         }
     }
 }
