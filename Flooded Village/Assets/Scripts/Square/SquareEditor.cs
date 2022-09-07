@@ -5,9 +5,8 @@ public class SquareEditor : SquareHeritage
 {
     public void Update()
     {
-        Debug.Log("aaa");
         if (square.actualType == square.type) return;
-        Debug.Log("bbb");
+
         square.actualType = square.type;
         Debug.Log(square.actualType);
         switch (square.type)
